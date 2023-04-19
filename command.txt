@@ -1,0 +1,6 @@
+-crypt (args) // encrypt file/folder/directry
+-decrypt (args) // decrypt file/folder/directry
+-open_url (args) // open web url
+-open_file (args) // open file
+-c_flood // flood the pc or crash the pc
+-cwd // show current working directry
