@@ -26,7 +26,7 @@ Remember that the purpose of this project is to learn, research, and understand 
 ## RIP V2
 This project is written in python3. Still In development
 
-## Usage
+## Usage (version 1 It is likely will not work for local)
 
 ```
 $ git clone https://github.com/kelivnjudha/RIP_V2.git
@@ -43,6 +43,15 @@ In admin.py Enter the server ip address. And run it.
 $ python3 admin.py
 ```
 In client.py Enter the server ip address. And change it into exe file and give it to the target !!(Don't actually do it)
+
+
+## Usage (Version 2 Work well for both public server and local)
+```
+$ git clone https://github.com/kelivnjudha/RIP_V2.git
+$ cd version2
+```
+Run the server_v2.py first. (public server or local)
+Admin username - Admin, password - 200210 or you can change it in server code "ADMIN_DATA = {username:password}".
 
 ALL THE COMMAND ARE IN "command" file.
 
