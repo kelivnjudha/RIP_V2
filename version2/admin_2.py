@@ -1,11 +1,31 @@
 import socket
 import threading
 
-HOST = "191.101.229.172"
+HOST = socket.gethostbyname(socket.gethostname())
 PORT = 9999
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect((HOST, PORT))
+
+def logo():
+    print("""
+    
+$$$$$$$\  $$$$$$\ $$$$$$$\        $$\    $$\  $$$$$$\  
+$$  __$$\ \_$$  _|$$  __$$\       $$ |   $$ |$$  __$$\ 
+$$ |  $$ |  $$ |  $$ |  $$ |      $$ |   $$ |\__/  $$ |
+$$$$$$$  |  $$ |  $$$$$$$  |      \$$\  $$  | $$$$$$  |
+$$  __$$<   $$ |  $$  ____/        \$$\$$  / $$  ____/ 
+$$ |  $$ |  $$ |  $$ |              \$$$  /  $$ |      
+$$ |  $$ |$$$$$$\ $$ |               \$  /   $$$$$$$$\ 
+\__|  \__|\______|\__|                \_/    \________|
+                                                       
+                                                       
+#########################################################
+                Created by: KelivnJudha
+                    Version: 1.0
+                  info: Admin file
+#########################################################                                                    
+""")
 
 def receive():
     while True:
@@ -19,6 +39,7 @@ def receive():
                 print(message)
                 active_users_message = client.recv(1024).decode("utf-8")
                 print(active_users_message)
+                logo()
                 main()
             else:
                 print(message)

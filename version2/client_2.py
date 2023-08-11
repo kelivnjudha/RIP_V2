@@ -6,7 +6,7 @@ import webbrowser
 import requests
 from cryptography.fernet import Fernet
 
-IP = "191.101.229.172"
+IP = socket.gethostbyname(socket.gethostname())
 PORT = 9999
 key = None
 
